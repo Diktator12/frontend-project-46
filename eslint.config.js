@@ -38,7 +38,7 @@ export default [
         },
       ],
       quotes: ["error", "single"],
-      "no-console": "warn",
+      "no-console": "off",
       "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
       ...prettierConfig.rules,
     },
