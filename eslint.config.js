@@ -1,5 +1,5 @@
 import js from "@eslint/js";
-import globals from "globals";
+import globals, { jest } from "globals";
 import pluginImport from "eslint-plugin-import";
 import pluginPrettier from "eslint-plugin-prettier";
 import prettierConfig from "eslint-config-prettier";
@@ -11,6 +11,7 @@ export default [
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",
+      jest: true,
       globals: {
         ...globals.browser,
         ...globals.node,
