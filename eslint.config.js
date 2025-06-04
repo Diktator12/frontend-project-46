@@ -12,10 +12,12 @@ export default [
   {
     languageOptions: {
       ecmaVersion: 2022,
-      sourceType: "module",
       globals: {
         ...node,
         ...jest
+      },
+      parserOptions: {
+        sourceType: module
       },
     },
     plugins: {
@@ -34,7 +36,6 @@ export default [
         {
           devDependencies: [
             "**/*.test.js",
-            "**/vite.config.js",
             "eslint.config.js",
           ],
         },
