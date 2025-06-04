@@ -1,8 +1,10 @@
 import js from "@eslint/js";
-import globals, { jest } from "globals";
+import pkg from "globals";
 import pluginImport from "eslint-plugin-import";
 import pluginPrettier from "eslint-plugin-prettier";
 import prettierConfig from "eslint-config-prettier";
+
+const { node, jest } = pkg
 
 /** @type {import("eslint").Linter.FlatConfig[]} */
 export default [
@@ -11,10 +13,9 @@ export default [
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",
-      jest: true,
       globals: {
-        ...globals.browser,
-        ...globals.node,
+        ...node,
+        ...jest
       },
     },
     plugins: {
