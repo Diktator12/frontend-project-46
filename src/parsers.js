@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import yaml from 'js-yaml';
+import { load } from 'js-yaml';
 
 export const parseFile = (filepath) => {
   const fileExt = path.extname(filepath)
@@ -12,7 +12,7 @@ export const parseFile = (filepath) => {
       return JSON.parse(fileContext)
     case '.yaml':
     case '.yml':
-      return yaml.load(fileContext)
+      return load(fileContext)
     default: 
       throw new Error(`Unsupported file type: ${fileExt}`)
   }
