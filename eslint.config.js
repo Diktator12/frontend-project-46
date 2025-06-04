@@ -6,18 +6,19 @@ import prettierConfig from "eslint-config-prettier";
 
 const { node, jest } = pkg
 
-/** @type {import("eslint").Linter.FlatConfig[]} */
+/** @type {import("eslint").Linter.Config[]} */
 export default [
   js.configs.recommended,
   {
     languageOptions: {
       ecmaVersion: 2022,
+      sourceType: "module",
       globals: {
         ...node,
         ...jest
       },
       parserOptions: {
-        sourceType: module
+        sourceType: "module"
       },
     },
     plugins: {
