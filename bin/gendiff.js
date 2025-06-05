@@ -11,14 +11,15 @@ program
   .arguments('<filepath1> <filepath2>')
   .description('Compares two configuration files and shows a difference.')
   .option('-f, --format [type]', 'output format')
-  .action((filepath1, filepath2) => {
+  .action((filepath1, filepath2, options) => {
     try {
-      const data1 = parseFile(filepath1)
-      const data2 = parseFile(filepath2)
-      const result = genDiff(data1, data2)
-      console.log(result)
+      const data1 = parseFile(filepath1);
+      const data2 = parseFile(filepath2);
+      const format = options.format || 'stylish';
+      const result = genDiff(data1, data2, format);
+      console.log(result);
     } catch (err) {
-      console.error(err.message)
+      console.error(err.message);
     }
   })
 
