@@ -1,36 +1,52 @@
-import { fileURLToPath } from 'url';
 import path from 'path';
 import genDiff from '../src/gendiff.js';
+import stylish from '../src/formatters/stylish.js';
+import { fileURLToPath } from 'url';
 import { parseFile } from '../src/parsers.js';
+import { readFileSync } from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const getFixturePath = (filename) => path.resolve(__dirname, '../__fixtures__', filename)
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 'nested', filename)
+const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8');
 
-const expected = `{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}`;
+const expected = readFile('expected_stylish.txt')
 
-test('gendiff flat JSON', () => {
-  const data1 = parseFile(getFixturePath('JSON/file1.json'))
-  const data2 = parseFile(getFixturePath('JSON/file2.json'))
+test('gendiff stylish format (JSON)', () => {
+  const data1 = parseFile(getFixturePath('file1.json'))
+  const data2 = parseFile(getFixturePath('file2.json'))
 
-  expect(genDiff(data1, data2)).toBe(expected)
+  expect(genDiff(data1, data2)).toEqual(expected)
 })
 
-test('gendiff flat YAML', () => {
-  const data1 = parseFile(getFixturePath('YAML/file1.yaml'))
-  const data2 = parseFile(getFixturePath('YAML/file2.yml'))
+test('gendiff stylish format (YAML)', () => {
+  const data1 = parseFile(getFixturePath('file1.yaml'))
+  const data2 = parseFile(getFixturePath('file2.yml'))
 
-  expect(genDiff(data1, data2)).toBe(expected)
+  expect(genDiff(data1, data2)).toEqual(expected)
 })
 
 test('throws error for unsupported file type', () => {
-  expect(() => parseFile(getFixturePath('./invalidFile.txt'))).toThrow('Unsupported file type: .txt');
+  expect(() => parseFile(getFixturePath('./invalidFile.txt'))).toThrowError('Unsupported file type: .txt');
+});
+
+test('throws error for unknown format', () => {
+  const data1 = parseFile(getFixturePath('file1.json'))
+  const data2 = parseFile(getFixturePath('file2.json'))
+  const format = 'unknown format'
+
+  expect(() => genDiff(data1, data2, format)).toThrowError(`Unknown format: ${format}`)
+})
+
+test('throws error on unknown node type', () => {
+  const fakeTree = [
+    {
+      key: 'setting1',
+      type: 'unexpected_type',
+      value: 'value',
+    },
+  ];
+
+  expect(() => stylish(fakeTree)).toThrowError("Unknown type: unexpected_type");
 });
