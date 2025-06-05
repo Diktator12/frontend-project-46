@@ -5,7 +5,7 @@ test:
 	npm test
 
 test-coverage: 
-	npm test -- --coverage --watch
+	npm test -- --coverage
 
 lint: 
 	npx eslint .
