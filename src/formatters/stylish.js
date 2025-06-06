@@ -1,7 +1,7 @@
 const INDENT_SIZE = 4
 const SIGN_OFFSET = 2
 
-const getIndent = (depth) => ' '.repeat(depth * INDENT_SIZE)
+const getIndent = depth => ' '.repeat(depth * INDENT_SIZE)
 const getLinePrefix = (sign, depth) => `${' '.repeat(depth * INDENT_SIZE - SIGN_OFFSET)}${sign} `
 
 const stringify = (value, depth) => {
@@ -20,7 +20,7 @@ const stringify = (value, depth) => {
 }
 
 const stylish = (tree, depth = 1) => {
-  const lines = tree.flatMap((node) => {
+  const lines = tree.flatMap(node => {
     const {
       key, type, value, oldValue, newValue, children,
     } = node
