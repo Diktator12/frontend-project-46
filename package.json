@@ -2,11 +2,10 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "bin": {
-    "gendiff": "./bin/gendiff.js"
+    "gendiff": "bin/gendiff.js"
   },
   "type": "module",
   "description": "[![Actions Status](https://github.com/Diktator12/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Diktator12/frontend-project-46/actions)",
-  "main": "gendiff.js",
   "scripts": {
     "test": "jest"
   },
