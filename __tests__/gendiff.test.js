@@ -70,6 +70,7 @@ test('throws error for unknown format', () => {
 })
 
 test('format returns stylish by default', () => {
-  const result = format(fakeTree)
+  const tree = []
+  const result = format(tree)
   expect(typeof result).toBe('string')
 })
