@@ -1,4 +1,4 @@
-const formatValue = value => {
+const formatValue = (value) => {
   if (value === null) return 'null'
   if (typeof value === 'object') return '[complex value]'
   if (typeof value === 'string') return `'${value}'`
@@ -6,7 +6,7 @@ const formatValue = value => {
 }
 
 const iter = (tree, path = []) => tree
-  .flatMap(node => {
+  .flatMap((node) => {
     const propertyPath = [...path, node.key].join('.')
 
     switch (node.type) {
@@ -25,6 +25,6 @@ const iter = (tree, path = []) => tree
     }
   })
 
-const plain = tree => iter(tree).join('\n')
+const plain = (tree) => iter(tree).join('\n')
 
 export default plain

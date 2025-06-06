@@ -3,7 +3,7 @@ import _ from 'lodash'
 const buildDiff = (data1, data2) => {
   const keys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)))
 
-  return keys.map(key => {
+  return keys.map((key) => {
     const val1 = data1[key]
     const val2 = data2[key]
 
