@@ -6,6 +6,7 @@ import { parseFile } from '../src/parsers.js'
 import { readFileSync } from 'fs'
 import format from '../src/formatters/index.js'
 import plain from '../src/formatters/plain.js'
+import buildDiff from '../src/buildDiff.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -15,6 +16,7 @@ const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8')
 
 const expectedStylish = readFile('expected_stylish.txt')
 const expectedPlain = readFile('expected_plain.txt')
+const expectedJSON = readFile('expected_json.txt')
 
 const fakeTree = [
   {
@@ -47,6 +49,14 @@ test('gendiff plain format (JSON)', () => {
 
 test('gendiff plain format (YAML)', () => {
   expect(genDiff(yaml1, yml2, 'plain')).toEqual(expectedPlain)
+})
+
+test('gendiff json format (JSON)', () => {
+  expect(genDiff(json1, json2, 'json')).toEqual(expectedJSON)
+})
+
+test('gendiff json format (YAML)', () => {
+  expect(genDiff(yaml1, yml2, 'json')).toEqual(expectedJSON)
 })
 
 test('gendiff returns stylish by default', () => {
