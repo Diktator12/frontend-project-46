@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { load } from 'js-yaml'
 
-export const parseFile = (filepath) => {
+export const parseFile = filepath => {
   const fileExt = path.extname(filepath)
 
   const fileContext = fs.readFileSync(filepath, 'utf-8')
@@ -13,7 +13,7 @@ export const parseFile = (filepath) => {
     case '.yaml':
     case '.yml':
       return load(fileContext)
-    default: 
+    default:
       throw new Error(`Unsupported file type: ${fileExt}`)
   }
 }
