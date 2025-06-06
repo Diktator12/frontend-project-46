@@ -10,8 +10,8 @@ import plain from '../src/formatters/plain.js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 'nested', filename)
-const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8')
+const getFixturePath = filename => path.join(__dirname, '..', '__fixtures__', 'nested', filename)
+const readFile = filename => readFileSync(getFixturePath(filename), 'utf-8')
 
 const expectedStylish = readFile('expected_stylish.txt')
 const expectedPlain = readFile('expected_plain.txt')
