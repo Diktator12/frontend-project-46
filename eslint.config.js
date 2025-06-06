@@ -54,7 +54,6 @@ export default [
       '@stylistic/eol-last': ['error', 'always'],
       '@stylistic/indent': ['error', 2],
       '@stylistic/comma-dangle': ['error', 'always-multiline'],
-      '@stylistic/brace-style': ['error', '1tbs'],
       '@stylistic/no-trailing-spaces': 'error',
     },
   },
