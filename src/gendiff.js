@@ -1,15 +1,9 @@
-import buildDiff from "./buildDiff.js"
-import stylish from "./formatters/stylish.js"
+import buildDiff from './buildDiff.js'
+import format from './formatters/index.js'
 
-const genDiff = (data1, data2, format = 'stylish') => {
-  const diff = buildDiff(data1, data2);
+const genDiff = (data1, data2, formatName = 'stylish') => {
+  const diff = buildDiff(data1, data2)
+  return format(diff, formatName)
+}
 
-  switch (format) {
-    case 'stylish':
-      return stylish(diff);
-    default:
-      throw new Error(`Unknown format: ${format}`);
-  }
-};
-
-export default genDiff;
+export default genDiff
