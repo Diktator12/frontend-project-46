@@ -25,41 +25,37 @@ const fakeTree = [
   },
 ]
 
-let json1, json2, yaml1, yml2
-
-beforeAll(() => {
-  json1 = parseFile(getFixturePath('file1.json'))
-  json2 = parseFile(getFixturePath('file2.json'))
-  yaml1 = parseFile(getFixturePath('file1.yaml'))
-  yml2 = parseFile(getFixturePath('file2.yml'))
-})
+const json1Path = getFixturePath('file1.json')
+const json2Path = getFixturePath('file2.json')
+const yaml1Path = getFixturePath('file1.yaml')
+const yml2Path = getFixturePath('file2.yml')
 
 test('gendiff stylish format (JSON)', () => {
-  expect(genDiff(json1, json2, 'stylish')).toEqual(expectedStylish)
+  expect(genDiff(json1Path, json2Path, 'stylish')).toEqual(expectedStylish)
 })
 
 test('gendiff stylish format (YAML)', () => {
-  expect(genDiff(yaml1, yml2, 'stylish')).toEqual(expectedStylish)
+  expect(genDiff(yaml1Path, yml2Path, 'stylish')).toEqual(expectedStylish)
 })
 
 test('gendiff plain format (JSON)', () => {
-  expect(genDiff(json1, json2, 'plain')).toEqual(expectedPlain)
+  expect(genDiff(json1Path, json2Path, 'plain')).toEqual(expectedPlain)
 })
 
 test('gendiff plain format (YAML)', () => {
-  expect(genDiff(yaml1, yml2, 'plain')).toEqual(expectedPlain)
+  expect(genDiff(yaml1Path, yml2Path, 'plain')).toEqual(expectedPlain)
 })
 
 test('gendiff json format (JSON)', () => {
-  expect(genDiff(json1, json2, 'json')).toEqual(expectedJSON)
+  expect(genDiff(json1Path, json2Path, 'json')).toEqual(expectedJSON)
 })
 
 test('gendiff json format (YAML)', () => {
-  expect(genDiff(yaml1, yml2, 'json')).toEqual(expectedJSON)
+  expect(genDiff(yaml1Path, yml2Path, 'json')).toEqual(expectedJSON)
 })
 
 test('gendiff returns stylish by default', () => {
-  expect(genDiff(json1, json2)).toEqual(expectedStylish)
+  expect(genDiff(json1Path, json2Path)).toEqual(expectedStylish)
 })
 
 test('throws error for unsupported file type', () => {
