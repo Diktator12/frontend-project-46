@@ -1,29 +1,29 @@
 import js from '@eslint/js'
-import pkg from 'globals'
+import globals from 'globals'
 import pluginImport from 'eslint-plugin-import'
 import pluginPrettier from 'eslint-plugin-prettier'
 import prettierConfig from 'eslint-config-prettier'
+import stylistic from '@stylistic/eslint-plugin'
 
-const { node, jest } = pkg
+const { node, jest } = globals
 
 /** @type {import("eslint").Linter.Config[]} */
 export default [
   js.configs.recommended,
+  stylistic.configs.recommended,
   {
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
       globals: {
         ...node,
-        ...jest
-      },
-      parserOptions: {
-        sourceType: 'module'
+        ...jest,
       },
     },
     plugins: {
       import: pluginImport,
       prettier: pluginPrettier,
+      stylistic,
     },
     rules: {
       'import/no-unresolved': 'error',
@@ -41,16 +41,25 @@ export default [
           ],
         },
       ],
+
       'no-console': 'off',
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+
       ...prettierConfig.rules,
       'quotes': ['error', 'single'],
       'semi': ['error', 'never'],
       'no-extra-semi': 'error',
+
+      '@stylistic/arrow-parens': ['error', 'as-needed'],
+      '@stylistic/eol-last': ['error', 'always'],
+      '@stylistic/indent': ['error', 2],
+      '@stylistic/comma-dangle': ['error', 'always-multiline'],
+      '@stylistic/brace-style': ['error', '1tbs'],
+      '@stylistic/no-trailing-spaces': 'error',
     },
   },
   {
-    files: ['gendiff.js'],
+    files: ['gendiff.js', 'eslint.config.js'],
     rules: {
       'import/no-extraneous-dependencies': 'off',
     },
