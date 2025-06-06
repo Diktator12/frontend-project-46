@@ -50,7 +50,7 @@ export default [
       'semi': ['error', 'never'],
       'no-extra-semi': 'error',
 
-      '@stylistic/arrow-parens': ['error', 'as-needed', `${{ 'requireForBlockBody': true }}`],
+      '@stylistic/arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
       '@stylistic/eol-last': ['error', 'always'],
       '@stylistic/indent': ['error', 2],
       '@stylistic/comma-dangle': ['error', 'always-multiline'],
