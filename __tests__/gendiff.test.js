@@ -6,7 +6,6 @@ import { parseFile } from '../src/parsers.js'
 import { readFileSync } from 'fs'
 import format from '../src/formatters/index.js'
 import plain from '../src/formatters/plain.js'
-import buildDiff from '../src/buildDiff.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
