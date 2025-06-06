@@ -18,4 +18,5 @@ program
       console.error(err.message)
     }
   })
+
 program.parse()
