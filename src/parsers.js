@@ -1,6 +1,6 @@
-import fs from 'fs';
-import path from 'path';
-import { load } from 'js-yaml';
+import fs from 'fs'
+import path from 'path'
+import { load } from 'js-yaml'
 
 export const parseFile = (filepath) => {
   const fileExt = path.extname(filepath)
