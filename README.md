@@ -17,6 +17,15 @@ git clone git@github.com:Diktator12/frontend-project-46.git
 
 make install
 ```
+## 🧪 Test
+#### Gendiff uses **JEST** for unit testing
+```bash
+make test
+```
+#### To see test coverage:
+```bash
+make test-coverage
+```
 ## 🚀 Usage
 ```bash
 gendiff [options] <filepath1> <filepath2>
@@ -28,7 +37,7 @@ Options:
   -f, --format [type]  output format
   -h, --help           display help for command
 ```
-## 🧪 Examples
+## 📋 Examples
 #### 🔸 Stylish (default)
 ```bash
 $ gendiff file1.json file2.json
@@ -56,7 +65,7 @@ Property 'common.setting3' was added with value: null
 Property 'common.nested.key' was updated. From 'old' to 'new'
 Property 'common.nested.extra' was added with value: 'added'
 ```
-#### 🔹 JSON
+#### 🔹 Json
 ```bash
 $ gendiff --format json file1.json file2.json
 ```
